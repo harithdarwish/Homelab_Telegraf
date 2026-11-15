@@ -1,0 +1,47 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+# Multiple machines grouped under one job: Node-remotes
+  - job_name: 'node-remote'
+    static_configs:
+      - targets:
+          - '192.168.0.52:9100'
+          - '192.168.0.54:9100'  # NEW: debian4-NPM
+
+# Multiple machines grouped under one job: cAdvisor-remotes
+  - job_name: 'docker-remote'
+    static_configs:
+      - targets: ['192.168.0.52:9095']
+        labels:
+          host: 'debian1-UptimeKuma'
+      - targets: ['192.168.0.54:9095']
+        labels:
+          host: 'debian4-NPM'  # NEW: debian4-NPM
+
+# NEW: Telegraf metrics scraped directly from debian4-NPM on port 9273
+  - job_name: 'telegraf-debian4-NPM'
+    static_configs:
+      - targets: ['192.168.0.54:9273']
+        labels:
+          host: 'debian4-NPM'
+
+
+# OTLP receiver: metrics pushed from remote collectors arrive at http://192.168.0.62:9090/api/v1/otlp
+# (this keeps the sender's host name and service name as labels so each host can be told apart)
+otlp:
+  promote_resource_attributes:
+    - host.name
+    - service.name
