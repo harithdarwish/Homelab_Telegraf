@@ -126,6 +126,7 @@
                       "group": "prometheus",
                       "kind": "DataQuery",
                       "spec": {
+                        "editorMode": "code",
                         "expr": "max by (device, fstype, path) (disk_total{host=\"$host\"})",
                         "format": "table",
                         "instant": true
@@ -1182,7 +1183,7 @@
                       },
                       {
                         "id": "custom.width",
-                        "value": 65
+                        "value": 58
                       }
                     ]
                   },
@@ -1251,7 +1252,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 195
+                        "value": 110
                       }
                     ]
                   },
@@ -1264,7 +1265,7 @@
                     "properties": [
                       {
                         "id": "custom.width",
-                        "value": 156
+                        "value": 154
                       }
                     ]
                   },
@@ -1747,6 +1748,394 @@
                     "displayName": "instance"
                   }
                 ],
+                "zebraStriping": false
+              }
+            },
+            "version": "13.3.0"
+          }
+        }
+      },
+      "panel-23": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "cg3u7kkyravb4a"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "node_power_supply_charge_full{job=\"node-exporter\", power_supply=\"BAT0\"} / node_power_supply_charge_full_design{job=\"node-exporter\", power_supply=\"BAT0\"} * 100",
+                        "legendFormat": "__auto",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 23,
+          "links": [],
+          "title": "Battery Health",
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "fixedColor": "blue",
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "dark-red",
+                        "value": 0
+                      },
+                      {
+                        "color": "light-yellow",
+                        "value": 50
+                      },
+                      {
+                        "color": "dark-green",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "options": {
+                "barShape": "rounded",
+                "barWidthFactor": 0.18,
+                "effects": {
+                  "barGlow": true,
+                  "centerGlow": true,
+                  "gradient": true
+                },
+                "endpointMarker": "glow",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 21,
+                "segmentSpacing": 0.14,
+                "shape": "circle",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": false,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              }
+            },
+            "version": "13.3.0"
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "cg3u7kkyravb4a"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "expr": "node_power_supply_capacity{job=\"node-exporter\", power_supply=\"BAT0\"}",
+                        "legendFormat": "__auto",
+                        "range": true
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 24,
+          "links": [],
+          "title": "Battery Status",
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "fixedColor": "blue",
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "dark-red",
+                        "value": 0
+                      },
+                      {
+                        "color": "semi-dark-yellow",
+                        "value": 50
+                      },
+                      {
+                        "color": "semi-dark-green",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "options": {
+                "barShape": "rounded",
+                "barWidthFactor": 0.18,
+                "effects": {
+                  "barGlow": true,
+                  "centerGlow": true,
+                  "gradient": true
+                },
+                "endpointMarker": "glow",
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "segmentCount": 21,
+                "segmentSpacing": 0.14,
+                "shape": "circle",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": false,
+                "sizing": "auto",
+                "sparkline": false,
+                "textMode": "auto"
+              }
+            },
+            "version": "13.3.0"
+          }
+        }
+      },
+      "panel-25": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "datasource": {
+                        "name": "cg3u7kkyravb4a"
+                      },
+                      "group": "prometheus",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "systemd_units_active_code{host=\"$host\", load=\"loaded\"}",
+                        "format": "table",
+                        "instant": true,
+                        "legendFormat": "__auto",
+                        "range": false
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": [
+                {
+                  "group": "organize",
+                  "kind": "Transformation",
+                  "spec": {
+                    "options": {
+                      "excludeByName": {
+                        "Time": true,
+                        "Value": true,
+                        "__name__": true,
+                        "active": false,
+                        "exported_host": true,
+                        "host": true,
+                        "instance": true,
+                        "job": true,
+                        "load": true
+                      },
+                      "includeByName": {},
+                      "indexByName": {
+                        "Time": 0,
+                        "Value": 10,
+                        "__name__": 2,
+                        "active": 3,
+                        "exported_host": 4,
+                        "host": 5,
+                        "instance": 6,
+                        "job": 7,
+                        "load": 8,
+                        "name": 1,
+                        "sub": 9
+                      },
+                      "renameByName": {
+                        "active": "State",
+                        "name": "Service",
+                        "sub": "Detail"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "description": "",
+          "id": 25,
+          "links": [],
+          "title": "Services Status",
+          "vizConfig": {
+            "group": "table",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  },
+                  "mappings": [
+                    {
+                      "options": {
+                        "activating": {
+                          "color": "semi-dark-blue",
+                          "index": 3,
+                          "text": "activating"
+                        },
+                        "active": {
+                          "color": "semi-dark-green",
+                          "index": 0,
+                          "text": "active"
+                        },
+                        "failed": {
+                          "color": "semi-dark-red",
+                          "index": 2,
+                          "text": "failed"
+                        },
+                        "inactive": {
+                          "color": "semi-dark-yellow",
+                          "index": 1,
+                          "text": "inactive"
+                        }
+                      },
+                      "type": "value"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "dark-red",
+                        "value": 1
+                      }
+                    ]
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Time",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.width",
+                        "value": 193
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "State",
+                      "scope": "series"
+                    },
+                    "properties": [
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "mode": "gradient",
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "mappings",
+                        "value": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true,
+                "sortBy": [],
                 "zebraStriping": false
               }
             },
@@ -2670,12 +3059,38 @@
                       "spec": {
                         "element": {
                           "kind": "ElementReference",
+                          "name": "panel-23"
+                        },
+                        "height": 8,
+                        "width": 12,
+                        "x": 0,
+                        "y": 4
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-24"
+                        },
+                        "height": 8,
+                        "width": 12,
+                        "x": 12,
+                        "y": 4
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
                           "name": "panel-7"
                         },
                         "height": 8,
                         "width": 8,
                         "x": 0,
-                        "y": 4
+                        "y": 12
                       }
                     },
                     {
@@ -2688,7 +3103,7 @@
                         "height": 8,
                         "width": 8,
                         "x": 8,
-                        "y": 4
+                        "y": 12
                       }
                     },
                     {
@@ -2701,7 +3116,7 @@
                         "height": 8,
                         "width": 8,
                         "x": 16,
-                        "y": 4
+                        "y": 12
                       }
                     },
                     {
@@ -2714,7 +3129,7 @@
                         "height": 8,
                         "width": 24,
                         "x": 0,
-                        "y": 12
+                        "y": 20
                       }
                     },
                     {
@@ -2727,7 +3142,7 @@
                         "height": 7,
                         "width": 12,
                         "x": 0,
-                        "y": 20
+                        "y": 28
                       }
                     },
                     {
@@ -2740,13 +3155,26 @@
                         "height": 7,
                         "width": 12,
                         "x": 12,
-                        "y": 20
+                        "y": 28
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-25"
+                        },
+                        "height": 8,
+                        "width": 12,
+                        "x": 0,
+                        "y": 35
                       }
                     }
                   ]
                 }
               },
-              "title": "Host Info"
+              "title": "Host"
             }
           },
           {
@@ -2883,7 +3311,7 @@
     "preload": false,
     "tags": [],
     "timeSettings": {
-      "autoRefresh": "30s",
+      "autoRefresh": "1h",
       "autoRefreshIntervals": [
         "5s",
         "10s",
@@ -2897,10 +3325,10 @@
         "1d"
       ],
       "fiscalYearStartMonth": 0,
-      "from": "now-1h",
+      "from": "2026-11-16T10:42:14.126Z",
       "hideTimepicker": false,
       "timezone": "browser",
-      "to": "now"
+      "to": "2026-11-16T12:42:14.126Z"
     },
     "title": "Telegraf Host and Docker",
     "variables": [
@@ -2929,8 +3357,8 @@
         "spec": {
           "allowCustomValue": true,
           "current": {
-            "text": "debian4-NPM",
-            "value": "debian4-NPM"
+            "text": "ubuntu1",
+            "value": "ubuntu1"
           },
           "hide": "dontHide",
           "includeAll": false,
